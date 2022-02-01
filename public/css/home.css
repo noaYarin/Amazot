@@ -1,0 +1,16 @@
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+a {
+    color: cornflowerblue;
+    margin: 20px;
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+    background-color: cornsilk;
+    text-align: center;
+}

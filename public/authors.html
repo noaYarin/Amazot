@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/authors.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Authors</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <label>Name</label>
+        <input type="text" placeholder="Enter name" name="name">
+        <label>Adress</label>
+        <input type="text" placeholder="Enter adress" name="adress">
+        <label>Phone</label>
+        <input type="tel" placeholder="Enter phone" name="phone">
+        <label>Birthday</label>
+        <input type="date" name="date">
+        <div class="checkbox">
+            <label>Is Alive</label>
+            <input type="checkbox">
+        </div>
+        <div class="btns">
+            <input type="button" value="Insert" data-role="insertBtn">
+            <input type="button" value="All Authors" data-role="FindAllBtn">
+            <input type="button" value="Find By ID" data-role="idBtn">
+            <input type="button" value="Update" data-role="updateBtn">
+        </div>
+    </div>
+    <script src="./js/authors.js"></script>
+</body>
+
+</html>

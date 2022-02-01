@@ -1,0 +1,36 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+label {
+    color: coral;
+}
+
+input,
+select {
+    margin: 20px;
+    padding: 5px;
+    width: 150px;
+}
+
+.checkbox {
+    display: flex;
+    width: 120px;
+}
+
+.table,
+tr,
+td {
+    text-align: center;
+    width: auto;
+    height: auto;
+    border: 1px solid #000;
+}
+
+input[type=button] {
+    background-color: rgb(248, 202, 117);
+    border: 2px solid mintcream;
+}
