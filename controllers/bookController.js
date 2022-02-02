@@ -31,10 +31,12 @@ let insertBook = (name, publish_date, author, isInStock) => {
     })
 }
 
-let updateBook = (_id) => {
+let updateBook = (_id, obj) => {
     return new Promise((resolve, reject) => {
         Books.findOneAndUpdate({
             _id
+        }, {
+            $set: obj
         }, (err, book) => {
             err ? reject(err) : resolve(book)
         })

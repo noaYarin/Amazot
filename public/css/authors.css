@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column;
+    flex-wrap: wrap;
+    height: 500px;
+    text-align: center;
 }
 
 label {
@@ -13,7 +15,8 @@ input,
 select {
     margin: 20px;
     padding: 5px;
-    width: 150px;
+    width: 180px;
+    text-align: center;
 }
 
 .checkbox {
@@ -32,5 +35,5 @@ td {
 
 input[type=button] {
     background-color: rgb(248, 202, 117);
-    border: 2px solid mintcream;
+    border: 2px dashed mintcream;
 }

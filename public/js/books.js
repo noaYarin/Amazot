@@ -6,7 +6,6 @@ $(function () {
     })
 
     $("[data-role=insertBtn]").click(() => {
-        reset();
         let bookObj = {
             bookName: $('[data-role="name"]').val(),
             publish_date: $('[data-role="date"]').val(),
@@ -22,6 +21,7 @@ $(function () {
         }).then(data => {
             console.log(data)
         }).catch(e => console.log(e))
+        reset();
     })
 
     $('[ data-role="FindAllBtn"]').click(() => {
@@ -30,18 +30,38 @@ $(function () {
         })
     })
 
+    let select = $('<select>')
+
+    function getBookId() {
+        $.get('/books', (authors) => {
+            $.each(authors, (i, value) => {
+                select.append($('<option></option>').text(value.name).attr("value", value._id))
+            })
+            $('.wrapper').append(select);
+        })
+    }
+
     $('[data-role="idBtn"]').click(() => {
-        let input = $('<input placeholder="Enter ID">');
-        let findBtn = $('<button>').text('Find');
-        $('.btns').append(input, findBtn);
-        findBtn.click(() => {
-            let bookId = $(input).val();
-            $.get('/books/' + bookId, function (data) {
+        getBookId()
+        $(select).change(function () {
+            $.get('/books/' + $(select).val(), function (data) {
                 getData(data)
             })
-            findBtn.remove()
-            input.remove()
         })
+    })
+
+    $('[data-role="deleteBtn"]').click(() => {
+        getBookId()
+        $(select).change(function () {
+            $.ajax({
+                url: '/book/' + $(this).val(),
+                method: 'DELETE',
+                success: function () {
+                    $('.wrapper').append('<p>The book was deleted</p>')
+                }
+            });
+        })
+
     })
 
     function reset() {

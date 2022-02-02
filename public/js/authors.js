@@ -89,6 +89,20 @@ $(function () {
         reset()
     })
 
+    $('[data-role="deleteBtn"]').click(() => {
+        getAuthorsId()
+        $(select).change(function () {
+            $.ajax({
+                url: '/author/' + $(this).val(),
+                method: 'DELETE',
+                success: function () {
+                    $('.wrapper').append('<p>The author was deleted</p>')
+                }
+            });
+        })
+
+    })
+
     function reset() {
         $('input[type=text]').val('')
         $('input[type=tel]').val('')
