@@ -31,18 +31,12 @@ let insertAuthor = (name, adress, phone, isAlive, birthday) => {
         })
     })
 }
-let updateAuthor = (_id, name, adress, phone, checkbox, birthday) => {
+let updateAuthor = (_id, obj) => {
     return new Promise((resolve, reject) => {
         Authors.findOneAndUpdate({
             _id
         }, {
-            $set: {
-                name,
-                adress,
-                phone,
-                checkbox,
-                birthday
-            }
+            $set: obj
         }, (err, author) => {
             err ? reject(err) : resolve(author);
         })

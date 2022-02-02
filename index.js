@@ -112,15 +112,8 @@ app.post('/author', (req, res) => {
 })
 
 app.put('/author/:authorId', (req, res) => {
-    let {
-        name,
-        adress,
-        phone,
-        checkbox,
-        birthday
-    } = req.body
     console.log(req.body);
-    updateAuthor(req.params.authorId, name, adress, phone, checkbox, birthday)
+    updateAuthor(req.params.authorId, req.body)
         .then(author => res.json(author))
         .catch(err => console.log(err))
 })

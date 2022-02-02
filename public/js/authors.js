@@ -65,18 +65,25 @@ $(function () {
             $('input[type="date"]').val(date)
     }
 
+    let createAuthor = () => {
+        let newAuthor = {};
+        let inputs = $('.wrapper input');
+        $.each(inputs, (i, input) => {
+            let key = $(input).attr('name')
+            if ($(input).attr('type') === 'checkbox') {
+                newAuthor[key] = $(input).is('checked');
+            } else {
+                newAuthor[key] = $(input).val();
+            }
+        })
+        return newAuthor;
+    }
 
     $('[data-role="saveBtn"]').click(() => {
-        let newAuthor = {
-            name: $('[name="name"]').val(),
-            adress: $('[name="adress"]').val(),
-            phone: $('[name="phone"]').val(),
-            isAlive: $('input[type="checkbox"]').is(':checked'),
-            birthday: $('input[type="date"]').val()
-        }
+        let obj = createAuthor()
         $.ajax({
             url: "/author/" + $(select).val(),
-            data: newAuthor,
+            data: obj,
             type: 'PUT',
         })
         reset()
