@@ -30,13 +30,13 @@ for an update, delete, or find by id there is a select list.
 <img width="900" src=https://user-images.githubusercontent.com/89860312/152180769-0a45ecbb-14c6-49f1-8c26-d5aeabfd06a5.png>
 <img width="900" src=https://user-images.githubusercontent.com/89860312/152180803-9a50b806-528a-4a7e-a452-4bfd36f12213.png>
 
-## npm packages
+## Npm packages
 **Express** - to create a server and send requests.
 **Mongoose** - to connect MongoDB and do queries.
 **Dotenv** - for environment variables.
 **Nodemon** - save changes in the file and restart the server.
 
-## technologies
+## Technologies
 1. HTML
 2. CSS
 3. Javascript
