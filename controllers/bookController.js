@@ -31,8 +31,30 @@ let insertBook = (name, publish_date, author, isInStock) => {
     })
 }
 
+let updateBook = (_id) => {
+    return new Promise((resolve, reject) => {
+        Books.findOneAndUpdate({
+            _id
+        }, (err, book) => {
+            err ? reject(err) : resolve(book)
+        })
+    })
+}
+
+let deleteBook = (_id) => {
+    return new Promise((resolve, reject) => {
+        Books.deleteOne({
+            _id
+        }, (err, book) => {
+            err ? reject(err) : resolve(book)
+        })
+    })
+}
+
 module.exports = {
     getAllBooks,
     getBookById,
-    insertBook
+    insertBook,
+    updateBook,
+    deleteBook
 }

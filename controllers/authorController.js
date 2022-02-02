@@ -10,7 +10,7 @@ let getAllAuthors = () => {
 
 let getAuthorById = (authorId) => {
     return new Promise((resolve, reject) => {
-        Authors.findOne({
+        Authors.find({
             _id: authorId
         }, (err, author) => {
             author ? resolve(author) : reject(err)
@@ -31,19 +31,39 @@ let insertAuthor = (name, adress, phone, isAlive, birthday) => {
         })
     })
 }
-let updateAuthor = (_id) => {
+let updateAuthor = (_id, name, adress, phone, checkbox, birthday) => {
     return new Promise((resolve, reject) => {
-        Authors.find({
+        Authors.findOneAndUpdate({
             _id
+        }, {
+            $set: {
+                name,
+                adress,
+                phone,
+                checkbox,
+                birthday
+            }
         }, (err, author) => {
             err ? reject(err) : resolve(author);
         })
     })
 }
 
+let deleteAuthor = (_id) => {
+    return new Promise((resolve, reject) => {
+        Authors.deleteOne({
+            _id
+        }, (err, author) => {
+            err ? reject(err) : resolve(author)
+        })
+    })
+
+}
+
 module.exports = {
     getAllAuthors,
     getAuthorById,
     insertAuthor,
-    updateAuthor
+    updateAuthor,
+    deleteAuthor
 }

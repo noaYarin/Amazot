@@ -51,7 +51,10 @@ $(function () {
 
     function getData(data) {
         let table = $('<table>').attr('class', 'table')
-        table.append('<tr><td>Id</td><td>Name</td><td>Publish Date</td><td>Author</td><td>In Stock</td></tr>')
+        let topics = ['Id', 'Name', 'Publish Date', 'Author', 'In Stock'];
+        for (let i = 0; i < topics.length; i++) {
+            table.append(`<td>${topics[i]}</td>`)
+        }
         $.each(data, (i, v) => {
             let value = JSON.stringify(v);
             let parseValue = JSON.parse(value);

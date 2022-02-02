@@ -13,14 +13,17 @@ app.use(express.static('public'))
 let {
     getAllBooks,
     getBookById,
-    insertBook
+    insertBook,
+    updateBook,
+    deleteBook
 } = require('./controllers/bookController');
 
 let {
     getAllAuthors,
     getAuthorById,
     insertAuthor,
-    updateAuthor
+    updateAuthor,
+    deleteAuthor
 } = require('./controllers/authorController');
 
 
@@ -63,14 +66,26 @@ app.post('/book', (req, res) => {
         })
 })
 
+app.put('/book/:bookId', (req, res) => {
+    updateBook(req.params.bookId)
+        .then(book => res.json(book))
+        .catch(err => console.log(err))
+})
+
+app.delete('/book/:bookId', (req, res) => {
+    deleteBook(req.params.bookId)
+        .then(getAllBooks()
+            .then(book => res.send(book)
+                .catch(err => console.log(err))
+            ).catch(err => console.log(err)))
+})
+
 app.get('/authors', (req, res) => {
     getAllAuthors()
         .then(authors => res.json(authors))
-        .catch(err => {
-            console.log(err);
-            res.send(err);
-        })
+        .catch(err => res.send(err))
 })
+
 app.get('/authors/:authorId', (req, res) => {
     getAuthorById(req.params.authorId)
         .then(author => res.json(author))
@@ -79,6 +94,7 @@ app.get('/authors/:authorId', (req, res) => {
             res.send(err);
         })
 })
+
 app.post('/author', (req, res) => {
     let {
         name,
@@ -94,8 +110,25 @@ app.post('/author', (req, res) => {
             res.send(err);
         })
 })
-app.put('/author/:bookId', (req, res) => {
-    updateAuthor(req.params.authorId)
+
+app.put('/author/:authorId', (req, res) => {
+    let {
+        name,
+        adress,
+        phone,
+        checkbox,
+        birthday
+    } = req.body
+    console.log(req.body);
+    updateAuthor(req.params.authorId, name, adress, phone, checkbox, birthday)
         .then(author => res.json(author))
         .catch(err => console.log(err))
+})
+
+app.delete('/author/:authorId', (req, res) => {
+    deleteAuthor(req.params.authorId)
+        .then(getAllAuthors()
+            .then(authors => res.send(authors))
+            .catch(err => console.log(err))
+        ).catch(err => console.log(err))
 })
