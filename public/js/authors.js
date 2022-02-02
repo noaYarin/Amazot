@@ -42,6 +42,7 @@ $(function () {
         getAuthorsId()
         $(select).change(function () {
             $.get(`/authors/${$(this).val()}`, function (data) {
+                console.log(data)
                 getData(data)
             })
         })
@@ -62,7 +63,7 @@ $(function () {
             $('[name="adress"]').val(authors[0].adress),
             $('[name="phone"]').val(authors[0].phone),
             $('input[type="checkbox"]').prop("checked", authors[0].isAlive),
-            $('input[type="date"]').val(date)
+            $('input[type="date"]').val(date);
     }
 
     let createAuthor = () => {

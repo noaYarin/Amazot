@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 let authors = mongoose.model('Authors', new mongoose.Schema({
     name: {
         type: String,
-        require: 'Enter name'
+        require: 'Enter name',
     },
     adress: {
         type: String,
@@ -19,5 +19,4 @@ let authors = mongoose.model('Authors', new mongoose.Schema({
         type: Date
     }
 }));
-
 module.exports = authors;

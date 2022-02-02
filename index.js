@@ -67,7 +67,7 @@ app.post('/book', (req, res) => {
 })
 
 app.put('/book/:bookId', (req, res) => {
-    updateBook(req.params.bookId)
+    updateBook(req.params.bookId, req.body)
         .then(book => res.json(book))
         .catch(err => console.log(err))
 })

@@ -2,19 +2,23 @@ let Authors = require('../models/authors');
 
 let getAllAuthors = () => {
     return new Promise((resolve, reject) => {
-        Authors.find({}, (err, authors) => {
-            authors ? resolve(authors) : reject(err)
-        })
+        Authors.find({})
+            .then(authors => resolve(authors))
+            .catch(e => reject(e))
     })
 }
 
-let getAuthorById = (authorId) => {
+let getAuthorById = (_id) => {
     return new Promise((resolve, reject) => {
         Authors.find({
-            _id: authorId
-        }, (err, author) => {
-            author ? resolve(author) : reject(err)
-        })
+                _id
+            })
+            .populate('books').exec(function (err, story) {
+                if (err) return handleError(err);
+                console.log('The author is %s', story.author.name);
+            })
+            .then(author => resolve(author))
+            .catch(err => reject(err))
     })
 }
 let insertAuthor = (name, adress, phone, isAlive, birthday) => {
