@@ -13,10 +13,6 @@ let getAuthorById = (_id) => {
         Authors.find({
                 _id
             })
-            .populate('books').exec(function (err, story) {
-                if (err) return handleError(err);
-                console.log('The author is %s', story.author.name);
-            })
             .then(author => resolve(author))
             .catch(err => reject(err))
     })

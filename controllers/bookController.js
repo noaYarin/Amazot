@@ -9,7 +9,7 @@ let getAllBooks = () => {
 }
 let getBookById = (bookId) => {
     return new Promise((resolve, reject) => {
-        Books.find({
+        Books.findOne({
             _id: bookId
         }, (err, book) => {
             book ? resolve(book) : reject(err)

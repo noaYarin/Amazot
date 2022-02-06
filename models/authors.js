@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-let authors = mongoose.model('Authors', new mongoose.Schema({
+
+const authorSchema = new mongoose.Schema({
     name: {
         type: String,
         require: 'Enter name',
@@ -18,5 +19,7 @@ let authors = mongoose.model('Authors', new mongoose.Schema({
     birthday: {
         type: Date
     }
-}));
-module.exports = authors;
+});
+
+let Authors = mongoose.model('Author', authorSchema);
+module.exports = Authors
